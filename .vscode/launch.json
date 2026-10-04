@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32F103C8 - ST-Link",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/Debug/troley_II.elf",
+            "gdbPath": "/opt/st/stm32cubeclt_1.22.0/GNU-tools-for-STM32/bin/arm-none-eabi-gdb",
+            "serverpath": "/usr/bin/openocd",
+            "searchDir": [
+                "/usr/share/openocd/scripts"
+            ],
+            // "openOCDPreConfigLaunchCommands": [
+            // "set CPUTAPID 0x2ba01477"
+            // ],
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f1x.cfg"
+            ],
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw",
+            "preLaunchTask": "build"
+        }
+    ]
+}

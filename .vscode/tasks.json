@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clean",
+            "group": "build",
+            "type": "process",
+            "command": "cmake",
+            "options": {
+                "statusbar": {
+                    "color": "#ff8b8b",
+                    "label": "$(clear-all) Clean",
+                    "detail": "Clean Debug"
+                },
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "args": [
+                "--build",
+                "--preset",
+                "Debug",
+                "--target",
+                "clean"
+            ],
+            "dependsOn": "Configure_Debug"
+        },
+        {
+            "label": "Configure_Debug",
+            "group": "build",
+            "type": "process",
+            "command": "cmake",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {
+                    "color": "#8bdeff",
+                    "label": "$(gear) Debug",
+                    "detail": "Cmake configure Debug"
+                }
+            },
+            "problemMatcher": [],
+            "args": [
+                "--preset",
+                "Debug"
+            ]
+        },
+        {
+            "label": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "type": "process",
+            "command": "cmake",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {
+                    "color": "#8bff97",
+                    "label": "$(code) Build",
+                    "detail": "Build Debug"
+                }
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "args": [
+                "--build",
+                "--preset",
+                "Debug",
+                "--parallel"
+            ],
+            "dependsOn": "Configure_Debug",
+            "dependsOrder": "sequence"
+        }
+    ]
+}
